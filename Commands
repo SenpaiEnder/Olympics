@@ -1,0 +1,62 @@
+package me.games.enderdragon909;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+public class Commands implements CommandExecutor {
+
+	@Override
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		
+		Player player = (Player) sender;
+		int startGame = 0;
+		
+			if (args[0].equalsIgnoreCase("join")) {
+				
+				int x = 200;
+				int y = 200;
+				int z = 200;
+				World lobby = Bukkit.getWorlds().get(0);
+				
+				Location lobby1 = new Location(lobby, x, y, z);
+				
+				player.teleport(lobby1);
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6[Olympic Games] &eYou have been teleported to the lobby!"));
+				startGame = startGame + 1;
+				Bukkit.getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&6[Olympic Games] &ePlayer " + player.getName() + " &ehas joined the Olympics!"));
+				
+				Bukkit.getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&6[Olympic Games] &eThere are " + startGame + "/8 players in game!"));
+				
+				if(startGame == 1) {
+					startGame();
+				}
+			}
+		
+			else if (args[0].equalsIgnoreCase("help")) {
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6[Olympic Games] &eMessage to be put here later!"));
+			}
+			
+			else if (args[0].equalsIgnoreCase("")) {
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6[Olympic Games] &eHey, this plugin actually works!"));
+			}
+		
+			else {
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6[Olympic Games] &eType /O HELP for more commands!"));
+			}
+			
+		return true;
+	}
+	
+	public void startGame() {
+		Bukkit.getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&6[Olympic Games] &eWelcome all to the Olympics!"));
+
+		//Working on adding timer here!
+		
+	}
+}
