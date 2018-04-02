@@ -1,0 +1,10 @@
+name: OlympicGames
+author: Senpai_Ender
+version: 1.0.0
+main: me.games.enderdragon909.Main
+description: Adds the Olympic Games to the server!
+commands:
+  olympics:
+    usage: /<command>
+    description: Main command for Olympic Games plugin
+    aliases: [o, olympic, oly]
